@@ -1,0 +1,33 @@
+<mat-toolbar class="color-primary">
+  <span class="fill-remaining-space">
+    <button mat-icon-button [matMenuTriggerFor]="menu" #menuTrigger="matMenuTrigger" (mouseover)="menuTrigger.openMenu()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu" [overlapTrigger]="false">
+      <span>
+        <button mat-menu-item (click)="setIndexTabMenu(2)" routerLink="home">
+          <mat-icon>home</mat-icon>
+          <span>Home</span>
+        </button>
+        <button mat-menu-item [matMenuTriggerFor]="setting">
+          <mat-icon>settings</mat-icon>
+          <span>Setting</span>
+        </button>
+      </span>
+    </mat-menu>
+    <mat-menu #setting="matMenu">
+      <button mat-menu-item>Birds</button>
+      <button mat-menu-item>Mammals</button>
+    </mat-menu>
+  </span>
+  <span class="fill-remaining-space">Pes-Tournament</span>
+</mat-toolbar>
+<mat-tab-group animationDuration="0ms" [selectedIndex]="indexTabMenu">
+  <mat-tab label="First"></mat-tab>
+  <mat-tab label="Second"></mat-tab>
+  <mat-tab label="Third"></mat-tab>
+</mat-tab-group>
+
+<button (click)="test()">ddd</button>
+
+<router-outlet></router-outlet>
