@@ -1,33 +1,34 @@
 <mat-toolbar class="color-primary">
   <span class="fill-remaining-space">
-    <button mat-icon-button [matMenuTriggerFor]="menu" #menuTrigger="matMenuTrigger" (mouseover)="menuTrigger.openMenu()">
+    <button mat-icon-button [matMenuTriggerFor]="menu" #menuTrigger="matMenuTrigger"
+      (mouseover)="menuTrigger.openMenu()">
       <mat-icon>menu</mat-icon>
     </button>
     <mat-menu #menu="matMenu" [overlapTrigger]="false">
       <span>
-        <button mat-menu-item (click)="setIndexTabMenu(2)" routerLink="home">
-          <mat-icon>home</mat-icon>
-          <span>Home</span>
+        <div *ngFor="let item of listMenu;">
+          <button mat-menu-item (click)="setIndexTabMenu(item.Seq - 1)" routerLink="{{item.RouterLink}}" *ngIf="!item.IsMenuItem">
+            <mat-icon>{{item.Icon}}</mat-icon>
+            <span>{{item.MenuName}}</span>
+          </button>
+          <button mat-menu-item [matMenuTriggerFor]="setting" *ngIf="item.IsMenuItem">
+          <mat-icon>{{item.Icon}}</mat-icon>
+          <span>{{item.MenuName}}</span>
         </button>
-        <button mat-menu-item [matMenuTriggerFor]="setting">
-          <mat-icon>settings</mat-icon>
-          <span>Setting</span>
-        </button>
+        </div>
       </span>
     </mat-menu>
     <mat-menu #setting="matMenu">
-      <button mat-menu-item>Birds</button>
-      <button mat-menu-item>Mammals</button>
+      <button mat-menu-item *ngFor="let item of listSettingMenu;" routerLink="{{item.RouterLink}}">{{item.SubMenuName}}</button>
+      <!-- <button mat-menu-item>Mammals</button> -->
     </mat-menu>
   </span>
   <span class="fill-remaining-space">Pes-Tournament</span>
 </mat-toolbar>
 <mat-tab-group animationDuration="0ms" [selectedIndex]="indexTabMenu">
-  <mat-tab label="First"></mat-tab>
-  <mat-tab label="Second"></mat-tab>
-  <mat-tab label="Third"></mat-tab>
+  <div *ngFor="let item of listMenu;">
+    <mat-tab *ngIf="!item.IsMenuItem" label="{{item.MenuName}}"></mat-tab>
+  </div>
 </mat-tab-group>
-
-<button (click)="test()">ddd</button>
 
 <router-outlet></router-outlet>

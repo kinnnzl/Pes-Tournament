@@ -6,6 +6,7 @@ import { map, catchError, tap } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
+
 export class AppService {
   private endpoint = 'http://localhost:3000/api/';
   private httpOptions = {
@@ -20,7 +21,11 @@ export class AppService {
     return body || {};
   }
 
-  getTest(): Observable<any> {
-    return this.http.get(this.endpoint + 'tutorials').pipe(map(this.extractData));
+  getMenus(): Observable<any> {
+    return this.http.get(this.endpoint + 'mtnMenu').pipe(map(this.extractData));
   }
+
+  getMenuItems(): Observable<any> {
+    return this.http.get(this.endpoint + 'mtnMenu/mtnMenuItem').pipe(map(this.extractData));
+  } 
 }

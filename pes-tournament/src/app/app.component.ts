@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AppService } from './app.service';
+import * as ConstValue from './Utilities/app.constants';
 
 @Component({
   selector: 'app-root',
@@ -13,17 +14,23 @@ export class AppComponent {
     private router: Router) {}
 
   public indexTabMenu = 0;
-  public menus = [
-    {
-      name: 'home',
-      index: '1'
-    }
-  ];
+  public listMenu: any[] = [];
+  public listMenuItem: any[] = [];
+  public listSettingMenu: any[] = [];
 
-  test() {
-    this.appService.getTest().subscribe((data: []) => {
-      var sdata = data
-      console.log(sdata);
+  ngOnInit() {
+    this.getMenus();
+  }  
+
+  getMenus() {
+    this.appService.getMenus().subscribe((data: []) => {
+      this.listMenu = data;
+      if (this.listMenu.length != 0) {
+        this.appService.getMenuItems().subscribe((data: []) => {
+          this.listMenuItem = data;
+          if (this.listMenuItem.length != 0) this.listSettingMenu = this.listMenuItem.filter(x => x.Module === ConstValue.MODULE_SETTING);
+        });
+      }
     });
   }
 
