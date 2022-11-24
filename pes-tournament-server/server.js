@@ -32,7 +32,7 @@ app.get("/", (req, res) => {
   res.json({ message: "Welcome to pes-tournament application." });
 });
 
-require("./app/routes/CUSTOMER/customer.routes")(app);
+require("./app/routes/Menu/menu.routes")(app);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 3000;

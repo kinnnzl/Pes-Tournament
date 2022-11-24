@@ -1,23 +1,24 @@
 module.exports = (sequelize, Sequelize) => {
-  const Customer = sequelize.define("CUSTOMER", {
+  const mtnMenu = sequelize.define("MtnMenu", {
     Id: {
       type: Sequelize.INTEGER,
-      primaryKey: true
+      primaryKey: true,
+      autoIncrement: true
     },
-    FirstName: {
+    Seq: {
+      type: Sequelize.INTEGER
+    },
+    MenuName: {
       type: Sequelize.STRING
     },
-    LastName: {
+    RouterLink: {
       type: Sequelize.STRING
     },
-    City: {
+    Icon: {
       type: Sequelize.STRING
     },
-    Country: {
-      type: Sequelize.STRING
-    },
-    Phone: {
-      type: Sequelize.STRING
+    IsMenuItem: {
+      type: Sequelize.BOOLEAN
     },
   }, {
     hooks: {
@@ -25,13 +26,13 @@ module.exports = (sequelize, Sequelize) => {
         options.raw = true;
       }
     },
-    tableName: 'CUSTOMER',
+    tableName: 'MtnMenu',
     name: {
-      singular: 'CUSTOMER',
-      plural: 'CUSTOMER'
+      singular: 'MtnMenu',
+      plural: 'MtnMenu'
     },
     timestamps: false
   });
 
-  return Customer;
+  return mtnMenu;
 }

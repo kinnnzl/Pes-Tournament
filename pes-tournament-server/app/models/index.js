@@ -18,6 +18,7 @@ const db = {};
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
-db.customers = require("./CUSTOMER/customer.model.js")(sequelize, Sequelize);
+db.mtnMenu = require("./Menu/menu.model.js")(sequelize, Sequelize);
+db.mtnMenuItem = require("./Menu/menuItem.model.js")(sequelize, Sequelize);
 
 module.exports = db;
