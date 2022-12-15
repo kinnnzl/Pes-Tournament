@@ -4,6 +4,7 @@ import { HomeComponent } from './home.component'
 import { HomeRoutingModule } from './home-routing.module';
 import { MatListModule } from '@angular/material/list';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { MatCardModule } from '@angular/material/card';
 
 
 @NgModule({
@@ -13,6 +14,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
     HomeRoutingModule,
     MatListModule,
     MatGridListModule,
+    MatCardModule
   ]
 })
 export class HomeModule { }

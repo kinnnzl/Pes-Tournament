@@ -7,6 +7,10 @@ const routes: Routes = [
     loadChildren: () => import('./home/home.module').then(x => x.HomeModule)
   },
   {
+    path: 'settings/team',
+    loadChildren: () => import('./team/team.module').then(x => x.TeamModule)
+  },
+  {
     path: '',
     loadChildren: () => import('./home/home.module').then(x => x.HomeModule)
   },

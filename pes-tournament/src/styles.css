@@ -1,14 +1,44 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
 
 .color-primary {
-    background-color: #5F0F4E !important;
+    background-color: #2A3543 !important;
     color: white !important;
 }
 
 .color-second {
-    background-color: #675682 !important;
+    background-color: #131A21 !important;
     color: white !important;
+}
+
+.color-admin-primary {
+    background-color: white !important;
+    color: black !important;
+}
+
+.container {
+    margin: 2% !important;
+}
+
+mat-card {
+    margin: 2px !important;
+    width: 100%;
+}
+
+.justify-content-center {
+    display: flex;
+    justify-content: center;
+}
+
+.mt-1 {
+    margin-top: 10% !important;
 }
