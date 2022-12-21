@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DialogContentSettingTeam, TeamComponent } from './team.component'
-import { TeamRoutingModule } from './team-routing.module';
+import { LeaugeComponent, DialogContentSettingLeauge } from './leauge.component'
+import { LeaugeRoutingModule } from './leauge-routing.module';
 import { MatListModule } from '@angular/material/list';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
@@ -12,13 +12,15 @@ import { MatTableModule } from '@angular/material/table'
 import { MatFormFieldModule } from '@angular/material/form-field'
 import { MatInputModule } from '@angular/material/input'
 import { MatIconModule } from '@angular/material/icon'
+import { MatChipsModule } from '@angular/material/chips'
+import { MatSelectModule } from '@angular/material/select'
 
 
 @NgModule({
-  declarations: [TeamComponent, DialogContentSettingTeam],
+  declarations: [LeaugeComponent, DialogContentSettingLeauge],
   imports: [
     CommonModule,
-    TeamRoutingModule,
+    LeaugeRoutingModule,
     MatListModule,
     MatGridListModule,
     MatCardModule,
@@ -28,7 +30,12 @@ import { MatIconModule } from '@angular/material/icon'
     MatTableModule,
     MatFormFieldModule,
     MatInputModule,
-    MatIconModule
+    MatIconModule,
+    MatChipsModule,
+    MatSelectModule
+  ],
+  exports : [
+    MatChipsModule
   ],
   providers: [
      {
@@ -37,4 +44,4 @@ import { MatIconModule } from '@angular/material/icon'
      }
   ]
 })
-export class TeamModule { }
+export class LeaugeModule { }

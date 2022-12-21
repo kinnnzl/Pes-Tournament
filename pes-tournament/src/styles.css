@@ -10,9 +10,23 @@ body {
     font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
+body .header {
+    margin: 10px !important;
+    /* color: #2A3543 !important; */
+}
+
 .color-primary {
     background-color: #2A3543 !important;
     color: white !important;
+}
+
+.color-primary-footer {
+    background-color: #2A3543 !important;
+}
+
+.mat-h1 {
+    font-weight: 500 !important;
+    font-size: 50px !important;
 }
 
 .color-second {
@@ -23,10 +37,6 @@ body {
 .color-admin-primary {
     background-color: white !important;
     color: black !important;
-}
-
-.container {
-    margin: 2% !important;
 }
 
 mat-card {
@@ -41,4 +51,16 @@ mat-card {
 
 .mt-1 {
     margin-top: 10% !important;
+}
+
+.mat-icon-button:hover .mat-edit {
+    color: gray;
+}
+
+.mat-icon-button:hover .mat-delete {
+    color: red;
+}
+
+label {
+    font-weight: 500 !important;
 }

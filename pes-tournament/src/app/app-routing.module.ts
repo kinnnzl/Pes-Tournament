@@ -11,6 +11,10 @@ const routes: Routes = [
     loadChildren: () => import('./team/team.module').then(x => x.TeamModule)
   },
   {
+    path: 'settings/leauge',
+    loadChildren: () => import('./leauge/leauge.module').then(x => x.LeaugeModule)
+  },
+  {
     path: '',
     loadChildren: () => import('./home/home.module').then(x => x.HomeModule)
   },
