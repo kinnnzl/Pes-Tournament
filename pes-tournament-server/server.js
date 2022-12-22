@@ -4,7 +4,7 @@ const cors = require("cors");
 const app = express();
 
 var corsOptions = {
-  origin: "http://localhost:3000"
+  origin: "http://localhost:4200"
 };
 
 app.use(cors(corsOptions));
@@ -16,8 +16,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use(function (req, res, next) {
-
   res.header("Access-Control-Allow-Origin", "*");
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
 });
@@ -33,6 +33,7 @@ app.get("/", (req, res) => {
 });
 
 require("./app/routes/Menu/menu.routes")(app);
+require("./app/routes/Master/master.routes")(app);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 3000;
