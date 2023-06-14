@@ -1,0 +1,87 @@
+<router-outlet>
+
+    <body>
+        <div class="color-admin-primary container">
+            <div class="row">
+                <!-- <div class="col-sm-1 ms-2">
+                    <img src="../../assets/images/gear.png" width="100px" alt="" />
+                </div> -->
+                <div class="col-sm-12 align-middle">
+                    <div class="mat-h1 mt-4 ms-2 d-flex">League
+                        <mat-chip-list #chipList class="m-1">
+                            <mat-chip>Setting</mat-chip>
+                        </mat-chip-list>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 d-flex justify-content-end">
+                    <button mat-raised-button (click)="openDialog(false, 0)">+ New League</button>
+                </div>
+            </div>
+            <mat-form-field>
+                <mat-label>Filter</mat-label>
+                <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+            </mat-form-field>
+            <div class="mat-elevation-z8">
+                <table mat-table [dataSource]="dataSource">
+
+                    <ng-container matColumnDef="No">
+                        <th mat-header-cell *matHeaderCellDef>No.</th>
+                        <td mat-cell *matCellDef="let element"> {{element.No}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="Logo">
+                        <th mat-header-cell *matHeaderCellDef>Logo</th>
+                        <td mat-cell *matCellDef="let element">
+                            <img [src]="element.LogoBase64" width="70px">
+                        </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="LeagueName">
+                        <th mat-header-cell *matHeaderCellDef>Name</th>
+                        <td mat-cell *matCellDef="let element"> {{element.LeagueName}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="Country">
+                        <th mat-header-cell *matHeaderCellDef>Country</th>
+                        <td mat-cell *matCellDef="let element">
+                            <img [src]="element.CountryImgUrl" width="35px" alt="{{element.Country}}"
+                                title="{{element.Country}}">
+                        </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="Teams">
+                        <th mat-header-cell *matHeaderCellDef>Teams</th>
+                        <td mat-cell *matCellDef="let element"> {{element.Teams}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="edit">
+                        <th mat-header-cell *matHeaderCellDef> Edit </th>
+                        <td mat-cell *matCellDef="let element"> <button mat-icon-button
+                                (click)="openDialog(true, element.LeagueID)"
+                                aria-label="Example icon button with a vertical three dot icon">
+                                <mat-icon class="mat-edit">edit_document</mat-icon>
+                            </button></td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="delete">
+                        <th mat-header-cell *matHeaderCellDef> Delete </th>
+                        <td mat-cell *matCellDef="let element"> <button mat-icon-button
+                                aria-label="Example icon button with a vertical three dot icon">
+                                <mat-icon class="mat-delete">delete</mat-icon>
+                            </button></td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="team-row">
+                    </tr>
+                </table>
+
+                <mat-paginator [pageSizeOptions]="[10, 20]" showFirstLastButtons
+                    aria-label="Select page of periodic elements">
+                </mat-paginator>
+            </div>
+        </div>
+    </body>
+</router-outlet>

@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
-import { LeaugeComponent } from './leauge/leauge.component';
+import { LeagueComponent } from './league/league.component';
 
 @NgModule({
   declarations: [

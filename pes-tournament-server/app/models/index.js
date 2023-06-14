@@ -21,5 +21,6 @@ db.sequelize = sequelize;
 db.mtnMenu = require("./Menu/menu.model.js")(sequelize, Sequelize);
 db.mtnMenuItem = require("./Menu/menuItem.model.js")(sequelize, Sequelize);
 db.mtnCountry = require("./Master/country.model.js")(sequelize, Sequelize);
+db.mtnLeague = require("./Master/league.model.js")(sequelize, Sequelize);
 
 module.exports = db;
