@@ -5,6 +5,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { UtillitiesService } from '../Utilities/service/utillities.service';
 import { LeagueService } from './service/league.service';
 import * as $ from "jquery";
+import { HotToastService } from '@ngneat/hot-toast';
 
 @Component({
   selector: 'app-league',
@@ -14,7 +15,8 @@ import * as $ from "jquery";
 export class LeagueComponent implements OnInit, AfterViewInit {
 
   constructor(public dialog: MatDialog
-    , private leagueService: LeagueService) { }
+    , private leagueService: LeagueService
+    , private toastService: HotToastService) { }
 
   displayedColumns: string[] = ['No', 'Logo', 'LeagueName', 'Country', 'Teams', 'edit', 'delete'];
   dataSource = new MatTableDataSource<any>();
@@ -42,6 +44,7 @@ export class LeagueComponent implements OnInit, AfterViewInit {
 
     dialogRef.afterClosed().subscribe(result => {
       // Action reload team
+      this.toastService.success('Saved success!')
       this.getLeagues();
     });
   }
@@ -49,6 +52,10 @@ export class LeagueComponent implements OnInit, AfterViewInit {
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  showToast() {
+    this.toastService.success('Successfully toasted!');
   }
 
 }
@@ -60,6 +67,7 @@ export class LeagueComponent implements OnInit, AfterViewInit {
 export class DialogContentSettingLeauge implements OnInit {
   constructor(public dialogRef: MatDialogRef<DialogContentSettingLeauge>
     , private utillitiesService: UtillitiesService
+    , private toastService: HotToastService
     , private leagueService: LeagueService,
     @Inject(MAT_DIALOG_DATA) public data: any,) { }
 
@@ -91,7 +99,6 @@ export class DialogContentSettingLeauge implements OnInit {
   }
 
   onSaveLeauge(): void {
-    console.log(this.objLeague);
     this.objLeague.CountryID = Number(this.objLeague.CountryID);
     if (this.data.EditMode) {
       this.leagueService.updateLeague(this.objLeague).subscribe((data: []) => {
